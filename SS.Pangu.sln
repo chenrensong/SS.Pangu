@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS.Pangu", "SS.NLP.Pangu\SS.Pangu.csproj", "{9D9753AE-CA6E-42E6-B801-4A0368B480AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS.Pangu", "SS.Pangu\SS.Pangu.csproj", "{9D9753AE-CA6E-42E6-B801-4A0368B480AE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS.Pangu.HighLight", "SS.NLP.Pangu.HighLight\SS.Pangu.HighLight.csproj", "{6FEF56E3-AEA8-46A7-8FC2-D435AEDC554B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS.Pangu.HighLight", "SS.Pangu.HighLight\SS.Pangu.HighLight.csproj", "{6FEF56E3-AEA8-46A7-8FC2-D435AEDC554B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
