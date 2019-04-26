@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PanGu", "PanGu\PanGu.csproj", "{0FFB9822-435D-43C7-86E8-612CAA7858AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS.PanGu", "PanGu\SS.PanGu.csproj", "{0FFB9822-435D-43C7-86E8-612CAA7858AF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PanGu.HighLight", "PanGu.HighLight\PanGu.HighLight.csproj", "{95CBEE06-B831-425B-A9F2-1C7823E1EC63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS.PanGu.HighLight", "PanGu.HighLight\SS.PanGu.HighLight.csproj", "{95CBEE06-B831-425B-A9F2-1C7823E1EC63}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PanGu.Lucene.Analyzer", "PanGu.Lucene.Analyzer\PanGu.Lucene.Analyzer.csproj", "{59C7BFF7-6BEF-41E0-92D5-E2A0B24F5807}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SS.PanGu.Lucene.Analyzer", "PanGu.Lucene.Analyzer\SS.PanGu.Lucene.Analyzer.csproj", "{59C7BFF7-6BEF-41E0-92D5-E2A0B24F5807}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
