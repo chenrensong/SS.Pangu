@@ -74,7 +74,7 @@ namespace PanGu.Dict
 
     public struct PositionLength
     {
-        public int Level ;
+        public int Level;
         public int Position;
         public int Length;
         public WordAttribute WordAttr;
@@ -167,12 +167,13 @@ namespace PanGu.Dict
 
             Stream stream = null;
             if (File.Exists(fileName))
-            { 
+            {
                 stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             }
-            else {
+            else
+            {
                 stream = GetStreamFromResources(Path.GetFileName(fileName));
-            }             
+            }
 
             byte[] version = new byte[32];
             stream.Read(version, 0, version.Length);
@@ -381,7 +382,7 @@ namespace PanGu.Dict
 
                 if (i < keyText.Length - 1)
                 {
-                    uint doubleChar = ((uint)keyText[i] * 65536) + keyText[i+1];
+                    uint doubleChar = ((uint)keyText[i] * 65536) + keyText[i + 1];
 
                     if (_DoubleCharDict.TryGetValue(doubleChar, out fwa))
                     {
@@ -394,7 +395,7 @@ namespace PanGu.Dict
                     continue;
                 }
 
-                long tripleChar = ((long)keyText[i]) * 0x100000000 + (uint)(keyText[i + 1] * 65536) + keyText[i+2];
+                long tripleChar = ((long)keyText[i]) * 0x100000000 + (uint)(keyText[i + 1] * 65536) + keyText[i + 2];
 
                 if (_TripleCharDict.TryGetValue(tripleChar, out lenList))
                 {
@@ -521,7 +522,7 @@ namespace PanGu.Dict
                     {
                         bool find = false;
                         int i;
-                        for(i = 0 ; i < wordLenArray.Length; i++)
+                        for (i = 0; i < wordLenArray.Length; i++)
                         {
                             byte len = wordLenArray[i];
                             if (len == key.Length)

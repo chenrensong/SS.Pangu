@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
+using System.IO;
 
 namespace PanGu.Framework
 {
@@ -26,11 +27,14 @@ namespace PanGu.Framework
     {
         static public string GetAssemblyPath()
         {
-            const string _PREFIX = @"file:///";
-            string codeBase = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
-
-            codeBase = codeBase.Substring(_PREFIX.Length, codeBase.Length - _PREFIX.Length).Replace("/", "\\");
-            return System.IO.Path.GetDirectoryName(codeBase) + @"\";
+            var type = (new Path()).GetType();
+            string currentDirectory = System.IO.Path.GetDirectoryName(type.Assembly.Location);
+            return currentDirectory;
+            //const string _PREFIX = @"file:///";
+            //string codeBase = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            //var altDirectorySeparatorChar = System.IO.Path.AltDirectorySeparatorChar;
+            //codeBase = codeBase.Substring(_PREFIX.Length, codeBase.Length - _PREFIX.Length).Replace("/", "//");
+            //return System.IO.Path.GetDirectoryName(codeBase);
         }
 
         static public string ProcessDirectory

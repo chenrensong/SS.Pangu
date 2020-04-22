@@ -26,10 +26,10 @@ namespace PanGu
 {
     public class Segment
     {
-    //    const string PATTERNS = @"[０-９\d]+\%|[０-９\d]{1,2}月|[０-９\d]{1,2}日|[０-９\d]{1,4}年|" +
-    //@"[０-９\d]{1,4}-[０-９\d]{1,2}-[０-９\d]{1,2}|" +
-    //@"\s+|" +
-    //@"[０-９\d]+|[^ａ-ｚＡ-Ｚa-zA-Z0-9０-９\u4e00-\u9fa5]|[ａ-ｚＡ-Ｚa-zA-Z]+|[\u4e00-\u9fa5]+";
+        //    const string PATTERNS = @"[０-９\d]+\%|[０-９\d]{1,2}月|[０-９\d]{1,2}日|[０-９\d]{1,4}年|" +
+        //@"[０-９\d]{1,4}-[０-９\d]{1,2}-[０-９\d]{1,2}|" +
+        //@"\s+|" +
+        //@"[０-９\d]+|[^ａ-ｚＡ-Ｚa-zA-Z0-9０-９\u4e00-\u9fa5]|[ａ-ｚＡ-Ｚa-zA-Z]+|[\u4e00-\u9fa5]+";
 
         const string PATTERNS = @"([０-９\d]+)|([ａ-ｚＡ-Ｚa-zA-Z_]+)";
 
@@ -146,7 +146,7 @@ namespace PanGu
                     wordInfoList.Remove(removeItem);
                 }
 
-                WordInfo newWordInfo = new WordInfo(new PanGu.Dict.PositionLength(first, last - first, 
+                WordInfo newWordInfo = new WordInfo(new PanGu.Dict.PositionLength(first, last - first,
                     wa), orginalText, _Parameters);
 
                 newWordInfo.WordType = WordType.English;
@@ -206,7 +206,7 @@ namespace PanGu
             for (int i = 0; i < text.Length; i++)
             {
                 char c = text[i];
-       
+
                 dfaResult = lexical.Input(c, i);
 
                 switch (dfaResult)
@@ -386,13 +386,13 @@ namespace PanGu
 
                                     if (originalWordType == WordType.SimplifiedChinese)
                                     {
-                                        newWord = Microsoft.VisualBasic.Strings.StrConv(wi.Word, 
+                                        newWord = Microsoft.VisualBasic.Strings.StrConv(wi.Word,
                                             Microsoft.VisualBasic.VbStrConv.TraditionalChinese, 0);
                                         wt = WordType.TraditionalChinese;
                                     }
                                     else
                                     {
-                                        newWord = Microsoft.VisualBasic.Strings.StrConv(wi.Word, 
+                                        newWord = Microsoft.VisualBasic.Strings.StrConv(wi.Word,
                                             Microsoft.VisualBasic.VbStrConv.SimplifiedChinese, 0);
                                         wt = WordType.SimplifiedChinese;
                                     }
@@ -564,7 +564,7 @@ namespace PanGu
 
             while (cur != null)
             {
-                if (_StopWord.IsStopWord(cur.Value.Word, 
+                if (_StopWord.IsStopWord(cur.Value.Word,
                     _Options.FilterEnglish, _Parameters.FilterEnglishLength,
                     _Options.FilterNumeric, _Parameters.FilterNumericLength))
                 {
@@ -660,7 +660,7 @@ namespace PanGu
             //用户自定义规则
             if (_Options.CustomRule)
             {
-                ICustomRule rule = CustomRule.GetCustomRule(_Parameters.CustomRuleAssemblyFileName, 
+                ICustomRule rule = CustomRule.GetCustomRule(_Parameters.CustomRuleAssemblyFileName,
                     _Parameters.CustomRuleFullClassName);
 
                 if (rule != null)
@@ -733,7 +733,7 @@ namespace PanGu
         {
             _WordDictionary = new PanGu.Dict.WordDictionary();
             string dir = Setting.PanGuSettings.Config.GetDictionaryPath();
-            _WordDictionary.Load(dir + "Dict.dct");
+            _WordDictionary.Load(System.IO.Path.Combine(dir, "Dict.dct"));
 
             _ChsName = new PanGu.Dict.ChsName();
             _ChsName.LoadChsName(Setting.PanGuSettings.Config.GetDictionaryPath());
@@ -742,7 +742,7 @@ namespace PanGu
             _WordDictionary.ChineseName = _ChsName;
 
             _StopWord = new PanGu.Dict.StopWord();
-            _StopWord.LoadStopwordsDict(dir + "Stopword.txt");
+            _StopWord.LoadStopwordsDict(System.IO.Path.Combine(dir, "Stopword.txt"));
 
             _Synonym = new PanGu.Dict.Synonym();
 

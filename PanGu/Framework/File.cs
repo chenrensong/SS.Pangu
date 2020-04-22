@@ -293,11 +293,10 @@ namespace PanGu.Framework
 
         public static void DeleteFile(string path, string fileName, bool recursive)
         {
-            if (path[path.Length - 1] != '\\')
+            if (path[path.Length - 1] != System.IO.Path.DirectorySeparatorChar)
             {
-                path += '\\';
+                path += System.IO.Path.DirectorySeparatorChar;
             }
-
             if (!recursive)
             {
                 System.IO.File.Delete(path + fileName);
@@ -315,6 +314,6 @@ namespace PanGu.Framework
             }
 
         }
-    
+
     }
 }

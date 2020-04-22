@@ -22,12 +22,12 @@ using PanGu.Framework;
 
 namespace PanGu.Setting
 {
-    [Serializable, System.Xml.Serialization.XmlRoot(Namespace = "http://www.codeplex.com/pangusegment")] 
+    [Serializable, System.Xml.Serialization.XmlRoot(Namespace = "http://www.codeplex.com/pangusegment")]
     public class PanGuSettings
     {
         #region static members
         private static PanGuSettings _Config;
-        
+
         public static PanGuSettings Config
         {
             get
@@ -73,13 +73,24 @@ namespace PanGu.Setting
         public string GetDictionaryPath()
         {
             string path = DictionaryPath;
-
+            //GetCurrentDirectory 根据.net core的设计，此方法不是真正的获取应用程序的当前方法，而是执行dotnet命令所在目录，
             string currentDir = System.IO.Directory.GetCurrentDirectory();
-            System.IO.Directory.SetCurrentDirectory(Framework.Path.GetAssemblyPath());
-            path = System.IO.Path.GetFullPath(path);
-            System.IO.Directory.SetCurrentDirectory(currentDir);
-
-            return Path.AppendDivision(path, '\\');
+            var assemblyPath = Framework.Path.GetAssemblyPath();
+            try
+            {
+                System.IO.Directory.SetCurrentDirectory(assemblyPath);
+                path = System.IO.Path.GetFullPath(path);
+                System.IO.Directory.SetCurrentDirectory(currentDir);
+                return Path.AppendDivision(path, System.IO.Path.DirectorySeparatorChar);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"" +
+                    $"DictionaryPath:{DictionaryPath} \r\n" +
+                    $" Path:{path} \r\n" +
+                    $" CurrentDir:{currentDir} \r\n" +
+                    $" AssemblyPath:{assemblyPath}", ex);
+            }
 
         }
 
@@ -93,7 +104,6 @@ namespace PanGu.Setting
             {
                 return _DictionaryPath;
             }
-
             set
             {
                 _DictionaryPath = value;
